@@ -87,5 +87,36 @@ class TestMain(unittest.TestCase):
             content = f.read()
         self.assertEqual(content, "task1 (High)\ntask2\n")
 
-if __name__ == '__main__':
-    unittest.main()
+    def test_add_task_with_complete_flag(self):
+        # Create a temporary todo.txt file
+        todo_file = os.path.join(self.test_dir, "todo.txt")
+        with open(todo_file, "w") as f:
+            f.write("")
+
+        # Run the script with a task and the --complete flag
+        result = subprocess.run(["python", "main.py", "task1", "--complete", "task1"], capture_output=True, text=True)
+
+        # Assert that the output is correct
+        self.assertEqual(result.stdout, "Marking task 'task1' as complete.\n")
+
+        # Assert that the todo.txt file contains the updated task
+        with open(todo_file, "r") as f:
+            content = f.read()
+        self.assertEqual(content, "task1 (complete)\n")
+
+    def test_add_task_with_priority_flag(self):
+        # Create a temporary todo.txt file
+        todo_file = os.path.join(self.test_dir, "todo.txt")
+        with open(todo_file, "w") as f:
+            f.write("")
+
+        # Run the script with a task and the --priority flag
+        result = subprocess.run(["python", "main.py", "task1", "--priority", "High"], capture_output=True, text=True)
+
+        # Assert that the output is correct
+        self.assertEqual(result.stdout, "Setting priority for task to task1.\n")
+
+        # Assert that the todo.txt file contains the updated task
+        with open(todo_file, "r") as f:
+            content = f.read()
+        self.assertEqual(content, "task1 (High)\n")

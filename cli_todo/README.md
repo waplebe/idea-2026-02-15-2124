@@ -1,12 +1,14 @@
 # Simple CLI Todo List
 
-This is a command-line tool for managing a todo list. It allows you to add tasks, view existing tasks, and persist them to a file.
+This is a command-line tool for managing a todo list. It allows you to add tasks, view existing tasks, mark tasks as complete, set task priorities, and persist them to a file.
 
 ## Features
 
-*   **Add Tasks:**  Add multiple tasks at once.
+*   **Add Tasks:** Add multiple tasks at once.
 *   **View Tasks:** Display the current list of tasks.
 *   **Persistence:** Tasks are saved to a file (`todo.txt`) and loaded when the application starts.
+*   **Mark Tasks as Complete:**  Mark tasks as complete by specifying the `--complete` flag.
+*   **Set Task Priority:** Set the priority of a task using the `--priority` flag (High, Medium, Low).
 *   **Error Handling:** Provides basic error messages for empty task lists.
 
 ## Usage
@@ -29,6 +31,16 @@ This is a command-line tool for managing a todo list. It allows you to add tasks
 
     This will read the tasks from `todo.txt` and print them to the console.
 
+3.  **Mark a Task as Complete:**
+    ```bash
+    python main.py --complete "Buy groceries"
+    ```
+
+4.  **Set Task Priority:**
+    ```bash
+    python main.py --priority High "Finish report"
+    ```
+
 ## Installation
 
 1.  Save the code as `main.py` in a directory named `cli_todo`.
@@ -45,9 +57,9 @@ Output:
 
 ```
 Tasks:
-- Buy groceries
-- Walk the dog
-- Finish report
+- Buy groceries (Low)
+- Walk the dog (Low)
+- Finish report (Low)
 ```
 
 ## Testing
@@ -63,9 +75,14 @@ python -m unittest discover -s tests
 *   **Issue 1:** The original script did not handle the case where no tasks were provided.  This has been fixed by adding a check for an empty task list and printing an appropriate message.
 *   **Issue 2:** The original script did not handle multiple tasks being added at once. This has been fixed by accepting multiple arguments using `nargs='+'`.
 *   **Issue 3:** The original script did not provide any persistence. This has been fixed by saving the tasks to a file (`todo.txt`).
+*   **Issue 4:** The original script did not support marking tasks as complete or setting priorities. These features have been added.
 
 ## Improvements
 
 *   **Error Handling:** Added basic error handling for empty task lists.
 *   **Persistence:** Implemented file persistence to store tasks between sessions.
-*   **Multiple Task Support:**  Allows adding multiple tasks at once.
+*   **Multiple Task Support:** Allows adding multiple tasks at once.
+*   **Task Completion:** Added functionality to mark tasks as complete.
+*   **Task Prioritization:** Added functionality to set the priority of tasks.
+*   **Command-Line Flags:** Implemented command-line flags for task completion and priority setting.
+*   **Improved Documentation:** Updated the README to include instructions for using the new features.
