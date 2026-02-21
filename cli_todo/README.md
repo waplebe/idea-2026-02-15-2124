@@ -6,7 +6,7 @@ This is a command-line tool for managing a todo list. It allows you to add tasks
 
 *   **Add Tasks:** Add multiple tasks at once.
 *   **View Tasks:** Display the current list of tasks.
-*   **Persistence:** Tasks are saved to a file (`todo.txt`) and loaded when the application starts.
+*   **Persistence:** Tasks are saved to a file (`todo.json`) and loaded when the application starts.
 *   **Mark Tasks as Complete:**  Mark tasks as complete by specifying the `--complete` flag.
 *   **Set Task Priority:** Set the priority of a task using the `--priority` flag (High, Medium, Low).
 *   **Error Handling:** Provides basic error messages for empty task lists.
@@ -20,7 +20,7 @@ This is a command-line tool for managing a todo list. It allows you to add tasks
     python main.py task1 task2 task3
     ```
 
-    This will print the list of tasks to the console and save them to `todo.txt`.
+    This will print the list of tasks to the console and save them to `todo.json`.
 
 2.  **View Tasks:**
     Run the script without arguments:
@@ -29,7 +29,7 @@ This is a command-line tool for managing a todo list. It allows you to add tasks
     python main.py
     ```
 
-    This will read the tasks from `todo.txt` and print them to the console.
+    This will read the tasks from `todo.json` and print them to the console.
 
 3.  **Mark a Task as Complete:**
     ```bash
@@ -86,3 +86,6 @@ python -m unittest discover -s tests
 *   **Task Prioritization:** Added functionality to set the priority of tasks.
 *   **Command-Line Flags:** Implemented command-line flags for task completion and priority setting.
 *   **Improved Documentation:** Updated the README to include instructions for using the new features.
+*   **Data Persistence:**  Tasks are now stored in a JSON file (`todo.json`) for better structure and easier modification.
+*   **Robust Error Handling:** Added try-except blocks to handle potential file errors during loading and saving.
+*   **Comprehensive Testing:** Added unit tests to cover all new features and bug fixes.
